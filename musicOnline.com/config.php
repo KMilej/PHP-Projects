@@ -2,7 +2,7 @@
 
 define('SERVER', 'LOCALHOST');
 define('USERNAME', 's2264629');
-define('PASSWORD', 'QfO3spxx');
+define('PASSWORD', 'O3spxx');
 define('DBNAME', 's2264629_musicOnline'); 
                     //define('USERNAME', 's2264629');
                     //define('PWRD', 'securepassword');
