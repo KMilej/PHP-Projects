@@ -1,0 +1,372 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+header {
+    width: 100%;
+}
+
+header .top-banner img {
+  width: 100%;
+  height: 160px; /* Ensures the image maintains aspect ratio */
+  /* max-height: 20px; /* Ensures the image is not too tall */
+}
+
+.logo {
+  display: flex; /* Ustawienie Flexboxa */
+  align-items: center; /* Wyśrodkowanie w pionie */
+  gap: 10px; /* Odstęp między obrazkami */
+}
+
+.logo img {
+  max-width: 100%; /* Zapobiega zniekształceniom */
+  height: auto;
+}
+
+
+
+.allcontent {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 15%;
+}
+
+.allcontent .search-box input {
+  width: 400px; /* Set a fixed width */
+  height: 40px; /* Optional: Adjust height */
+  padding: 10px; /* Optional: More space inside */
+  font-size: 16px; /* Optional: Bigger text */
+}
+
+/* NAVIGATION BAR */
+
+.navigation {
+    width: 100%;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+    
+.navigation span {
+  color: white;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.navigation a {
+  color: white;
+}
+/*Search BAR */
+
+
+
+.search-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    background: #f8f8f8;
+}
+ .latest-products {
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0;
+    background: #f4f4f4;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    background-color: #f7e8f0;
+    padding: 10px;
+  }
+  
+  footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  footer .logo {
+    margin-bottom: 30px;
+  }
+  
+  footer h4 {
+    font-size: 14px;
+    padding-bottom: 20px;
+  }
+  
+  footer p {
+    font-size: 13px;
+    padding-bottom: 0 0 8px 0;
+  }
+  footer a {
+    font-size: 13px;
+    text-decoration: none;           /*turn off link design*/
+    margin: 0 0 8px 0;
+    color: #222;
+    margin-bottom: 10px;
+  }
+  
+  footer .follow {
+    margin-top: 20px;
+  }
+  
+  footer .follow i {
+    color: #465b52;
+    padding-right: 4px;
+    cursor: pointer;
+  }
+  
+  footer .install .row img{
+    border: 1px solid #088178;
+    border-radius: 6px;
+  }
+  
+  footer .install img {
+    margin: 10px 0 15px 0;
+  }
+  
+  footer .follow i:hover,
+  footer a:hover {
+    color: #088178;
+  }
+  
+  footer .copyright {
+    width: 100%;
+    text-align: center;
+  }
+
+/* ADVERTISING CSS */
+
+.advertising {
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+}
+
+  .slideshow img {
+      padding-top: 1%;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+  }
+  
+  .slideshow img.active {
+      opacity: 1;
+  }
+
+  /* Tracking !!!!!!!!!!!!!!!!!!!!!!!! */
+
+.tracking {
+    background: white;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.small-image {
+  width: 100%; /* Reduce size to 20% of the original (80% smaller) */
+  height: 80px !important; /* Maintain aspect ratio */
+}
+
+.trackingbar {
+  padding: 2%
+}
+
+/* MAIN PRODDUCTS */
+
+main {
+  display: grid;
+  grid-column-gap: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px; 
+}
+
+main .section-title {
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+main .products .product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 35px;
+  grid-row-gap: 50px;
+}
+main .productimg {
+  padding: 5px;
+  margin: auto;
+  border: 3px solid black;
+  /* padding: 5px; */
+  border-radius: 5%;
+  width: 100%;  
+  height: 340px; 
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 340px;
+  max-height: 340px;
+
+
+  /* overflow: hidden; Zapobiega przewijaniu */
+}
+main .productimg img {
+  padding: 5px;
+  height: 150px;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  object-fit: cover;
+}
+main .product .title a {
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  color: #555;
+  line-height: 26px;
+}
+main .products .title a:hover{
+  text-decoration: underline;
+}
+main .products .description {
+  margin-top: 10px;
+}
+
+main .products .price {
+  font-size: 24px;
+  margin-top: 30px;
+  color: darkred;
+}
+
+
+/* Search Bar CSS */
+/* Styl dla sekcji wyszukiwania */
+.productsearch {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 35px;
+  margin-top: 30px;
+}
+
+/* Styl dla obrazków wyników wyszukiwania */
+.productimgsearch {
+  padding: 5px;
+  margin: auto;
+  border: 3px solid black;
+  border-radius: 5%;
+  width: 100%;  
+  height: 340px; 
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 163px;
+  max-height: 163px;
+  overflow: hidden; /* Zapobiega przewijaniu */
+}
+
+.productimgsearch img {
+  padding: 5px;
+  height: 150px;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Styl dla opisu wyników wyszukiwania */
+.product-infosearch {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styl dla tytułów produktów */
+.product-infosearch .title a {
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  color: #555;
+  line-height: 26px;
+}
+
+.product-infosearch .title a:hover {
+  text-decoration: underline;
+}
+
+/* Styl dla opisu produktów */
+.product-infosearch .description {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Styl dla ceny produktów */
+.product-infosearch .price {
+  font-size: 24px;
+  margin-top: 20px;
+  color: darkred;
+}
+
+
+/* LOGIN */
+
+.login button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login button:hover {
+  background-color: #0056b3;
+}
+/* REGISTER */
+
+.registor {
+
+  margin-top: 20px;
+}
+
+.registor button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.registor button:hover {
+  background-color: #0056b3;
+}
