@@ -22,7 +22,6 @@ include('header.php');
 <section class="latest-products">Last added product</section>
 
 
-
 <?php
 include('footer.php');
 ?>

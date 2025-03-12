@@ -18,9 +18,58 @@ include('header.php');
     </div>
 </div>
 
-</section>
-<section class="latest-products">Last added product</section>
 
+<main>
+    <div class="products">
+        <div class="section-title">home page</div>
+        <?php $products = getHomePageProducts(30) ?>
+       
+            <div class="product">
+                 <?php
+                foreach($products as $product) {
+                    ?> 
+                        <div class="productimg">
+                            <img src="<?php echo "images/products/{$product['image']}" ?>" alt="">
+                            <div class="productinfo">
+                            <p class="title">
+                                <a href="pages.php?id=<?php echo $product['id'] ?>">
+                                 <?php echo htmlspecialchars($product['title']); ?>
+                                </a>
+                            </p>
+                            <p class="description">
+                                <?php echo $product['description'] ?>
+                            </p>
+                            <p class="price">
+                                <?php echo $product['price'] ?>
+                            </p>
+                        
+                        </div>
+                        </div>
+
+                        
+                     <?php
+                }
+                    ?>
+<!--                 
+                    <div class="productimg">
+                        <img src="images/products/vinyl1.jpg" alt="">
+                    </div>
+                    <div class="prductinfo">
+                        <p class="title">
+                            <a href="">coding is fun</a>
+                        </p>
+                        <p class="description">
+                            cos tam dobrego do sluchania
+                        </p>
+                        <p class="price">29.99 &euro;</p>
+                    </div> -->
+
+                 
+            </div>
+            
+    </div>   
+
+</main>
 
 <?php
 include('footer.php');

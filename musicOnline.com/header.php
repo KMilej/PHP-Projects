@@ -30,7 +30,7 @@ session_start();
             <a href="http://olly.fifecomptech.net/~s2264629/musicOnline.com/contact.php">Contact</a>
             <a href="http://olly.fifecomptech.net/~s2264629/musicOnline.com/product.php">Products</a>
             <a href="http://olly.fifecomptech.net/~s2264629/musicOnline.com/notification.php">Notification</a>
-            <a href="http://olly.fifecomptech.net/~s2264629/musicOnline.com/cart.php">Cart</a>
+            <a href="http://olly.fifecomptech.net/~s2264629/musicOnline.com/notification.php">Cart</a>
 
             <?php if (isset($_SESSION["user_id"])): ?>
             <span>Welcome, <strong><?php echo htmlspecialchars($_SESSION["username"]); ?></strong>!</span>
@@ -47,18 +47,70 @@ session_start();
     <div class="logo">
         <img src="images/main/musiconline.jpg" alt="Logo">
     </div>
-
+    
     <div class="search-box">
-        <form action="search.php" method="GET">
-            <input type="text" name="query" placeholder="Search bar" required>
-            <select name="category">
-                <option value="">All Categories</option>
-                <option value="rock">Rock</option>
-                <option value="pop">Pop</option>
-                <option value="jazz">Jazz</option>
-                <option value="hiphop">Hip-Hop</option>
-            </select>
-            <button type="submit">Search</button>
-        </form>
-    </div>
+            <form id="searchForm">
+                <input type="text" id="live_search" name="query" placeholder="Search bar" required>
+                <select id="category" name="category">
+                    <option value="">All Categories</option>
+                    <option value="rock">Rock</option>
+                    <option value="pop">Pop</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="hiphop">Hip-Hop</option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    
 </section>
+<div id="searchresult"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // 🚀 Obsługa dynamicznego wyszukiwania
+        $("#live_search, #category").on("input change", function() {
+            var input = $("#live_search").val();
+            var category = $("#category").val();
+
+            if (input !== "") {
+                console.log("AJAX Triggered: " + input + " | Category: " + category); // 🚀 Debugging
+                $.ajax({
+                    url: "livesearch.php",  
+                    method: "POST",
+                    data: { input: input, category: category },
+                    success: function(data) {
+                        $("#searchresult").html(data).show();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("AJAX Error: " + error); // 🚀 Debugging
+                    }
+                });
+            } else {
+                $("#searchresult").hide();
+            }
+        });
+
+        // 🚀 Obsługa wyszukiwania po kliknięciu "Search"
+        $("#searchForm").submit(function(event) {
+            event.preventDefault();
+            var input = $("#live_search").val();
+            var category = $("#category").val();
+            
+            console.log("Submit Triggered: " + input + " | Category: " + category); // 🚀 Debugging
+
+            $.ajax({
+                url: "livesearch.php",
+                method: "POST",
+                data: { input: input, category: category },
+                success: function(data) {
+                    $("#searchresult").html(data).show();
+                },
+                error: function(xhr, status, error) {
+                    console.log("AJAX Submit Error: " + error); // 🚀 Debugging
+                }
+            });
+        });
+    });
+</script>

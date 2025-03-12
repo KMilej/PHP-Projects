@@ -18,11 +18,11 @@ include('header.php');
     </div>
 </div>
 
-</section>
-<section class="latest-products">Last added product</section>
+<!-- </section>
+<section class="latest-products">Last added product</section> -->
 
 <section class="categoriess">
-    <div class="categoriesload">load categories</div>
+    <div class="categoriesload">choose your favorite category</div>
 
     <?php $categories = getCategories() ?> 
     <?php
@@ -50,8 +50,8 @@ include('header.php');
                             <img src="<?php echo "images/products/{$product['image']}" ?>" alt="">
                             <div class="productinfo">
                             <p class="title">
-                                <a href="product.php?title=<?php echo $product['title'] ?>">
-                                    <?php echo $product['title'] ?>
+                                <a href="pages.php?id=<?php echo $product['id'] ?>">
+                                 <?php echo htmlspecialchars($product['title']); ?>
                                 </a>
                             </p>
                             <p class="description">

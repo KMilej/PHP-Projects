@@ -1,53 +1,104 @@
 <?php
-# Script basic.Connect.php
 
 $pageTitle = 'Main';
-
 include('header.php');
 ?>
 
-<section class="user-menu">
+<?php if (isset($_SESSION['role'])): ?>
+    <?php if ($_SESSION['role'] == 'user'): ?>
+    <section class="user-menu">
+        <div class="userbutton">
+            <button onclick="showProductForm()">Add Product</button>
+            <div id="productForm" style="display: none;">
+                <h2>Add New Product</h2>
+                <p id="message" style="color: green; font-weight: bold;"></p>
+                <form id="addProductForm" enctype="multipart/form-data">
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" required><br>
+
+                    <label for="price">Price ($):</label>
+                    <input type="number" name="price" step="0.01" required><br>
+
+                    <label for="description">Description:</label>
+                    <textarea name="description" required></textarea><br>
+
+                    <label for="category">Category:</label>
+                    <select name="category" required>
+                        <option value="rock">Rock</option>
+                        <option value="pop">Pop</option>
+                        <option value="jazz">Jazz</option>
+                        <option value="hiphop">Hip-Hop</option>
+                    </select><br>
+
+                    <label for="image">Product Image:</label>
+                    <input type="file" name="image" accept="image/*" required><br>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <button id="showProducts">Show All My Products</button>
+                <div id="productForm2" style="display: none;">
+                    <div id="productsContainer"></div>
+                </div>
 
 
-<div class="container" style="max-width: 50%;">
-    <div class="text-center mt-5 mb-4">
-        <h2>Live Search in Products</h2>
-    </div>
-    <input type="text" class="form-control" id="live_search" autocomplete="off" placeholder="Search for products...">
-    <div id="searchresult"></div> <!-- Wyniki wyszukiwania -->
-</div>
-
-.
-
-
-</section>
-
-<div id="searchresult"></div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#live_search").keyup(function() {
-            var input = $(this).val();
-
-            if (input !== "") {
-                $.ajax({
-                    url: "livesearch.php",  // Właściwa nazwa pliku obsługującego wyszukiwanie
-                    method: "POST",
-                    data: { input: input },
-                    success: function(data) {
-                        $("#searchresult").html(data).show();
-                    }
-                });
-            } else {
-                $("#searchresult").hide();
-            }
-        });
-    });
-</script>
+        </div>
+    </section>
 
 
 
-<?php
-include('footer.php');
-?>
+    <?php elseif ($_SESSION['role'] == 'admin'): ?>
+        <section class="user-menu">
+            <div class="userbutton">
+                <!-- Manage Users -->
+                <button id="manageUsersBtn">Manage Users</button>
+                <div id="manageUsersSection" style="display: none;">
+                    
+                    <button id= "showManageUser">Show & Modify User</button>
+                    <div id="alluserContainer" style="display: none;"></div>
+
+
+
+                </div>                    
+                
+
+
+                <!-- Manage Products -->
+                <button id="manageProductsBtn">Manage Products</button>
+                <div id="manageProductsSection" style="display: none;">
+                    <button onclick="showProductForm()">Add Product</button>
+                    <div id="productForm" style="display: none;">
+                        <h2>Add New Product</h2>
+                        <form id="addProductForm" enctype="multipart/form-data">
+                            <label for="title">Title:</label>
+                            <input type="text" name="title" required><br>
+
+                            <label for="price">Price ($):</label>
+                            <input type="number" name="price" step="0.01" required><br>
+
+                            <label for="description">Description:</label>
+                            <textarea name="description" required></textarea><br>
+
+                            <label for="category">Category:</label>
+                            <select name="category" required>
+                                <option value="rock">Rock</option>
+                                <option value="pop">Pop</option>
+                                <option value="jazz">Jazz</option>
+                                <option value="hiphop">Hip-Hop</option>
+                            </select><br>
+
+                            <label for="image">Product Image:</label>
+                            <input type="file" name="image" accept="image/*" required><br>
+
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                    <button id="showAllProductsBtn">Show All Products</button>
+                    <div id="allProductsContainer" style="display: none;"></div>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php include('footer.php'); ?>
