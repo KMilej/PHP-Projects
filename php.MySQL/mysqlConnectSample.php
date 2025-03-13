@@ -6,7 +6,7 @@
 
 
 define('USERNAME', 's2264629');
-define('PWRD', 'QfO3spxx');
+define('PWRD', 'QfO3sp');
 define('HOSTNAME', 'LOCALHOST');
 define('DBNAME', 's2264629_EqDesign'); 
                     //define('USERNAME', 's2264629');
