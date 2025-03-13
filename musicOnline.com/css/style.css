@@ -37,7 +37,7 @@ header .top-banner img {
 }
 
 .allcontent .search-box input {
-  width: 400px; /* Set a fixed width */
+  /* width: 400px; Set a fixed width */ 
   height: 40px; /* Optional: Adjust height */
   padding: 10px; /* Optional: More space inside */
   font-size: 16px; /* Optional: Bigger text */
@@ -49,6 +49,7 @@ header .top-banner img {
     width: 100%;
     background: #222;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 15px;
 }
@@ -518,4 +519,15 @@ main .products .price {
   cursor: pointer;
   transition: background 0.3s ease-in-out;
 }
+@media screen and (max-width: 768px) {
+  header .top-banner img {
+      height: 120px; /* Zmniejszona wysokość na mniejszych ekranach */
+  }
+}
 
+/* Dla ekranów mniejszych niż 480px (smartfony) */
+@media screen and (max-width: 480px) {
+  header .top-banner img {
+      height: 100px; /* Jeszcze mniejsza wysokość dla telefonów */
+  }
+}
