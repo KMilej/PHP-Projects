@@ -16,7 +16,7 @@ include('header.php');
                     <label for="title">Title:</label>
                     <input type="text" name="title" required><br>
 
-                    <label for="price">Price ($):</label>
+                    <label for="price">Price (GBP):</label>
                     <input type="number" name="price" step="0.01" required><br>
 
                     <label for="description">Description:</label>
@@ -73,7 +73,7 @@ include('header.php');
                             <label for="title">Title:</label>
                             <input type="text" name="title" required><br>
 
-                            <label for="price">Price ($):</label>
+                            <label for="price">Price (GBP):</label>
                             <input type="number" name="price" step="0.01" required><br>
 
                             <label for="description">Description:</label>

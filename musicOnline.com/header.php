@@ -20,6 +20,16 @@
 <body>
 <?php
 session_start();
+// Włączanie logowania błędów
+ini_set('log_errors', 1);
+ini_set('display_errors', 1); // Do testów – pokaże błędy na stronie
+error_reporting(E_ALL);
+
+// Ustawienie ścieżki logów na serwerze
+ini_set('error_log', __DIR__ . '/error_log.txt');
+
+// Sprawdzenie, czy logi działają – zapis testowego błędu
+error_log("🚀 Test logowania błędów PHP!");
 ?>
 <header>
         <div class="top-banner"> <img src="images/main/topimage.jpg" alt="Girl in a jacket"></div>
@@ -64,6 +74,7 @@ session_start();
     
 </section>
 <div id="searchresult"></div>
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

@@ -7,19 +7,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($_POST["password"]);
     $confirm_password = trim($_POST["confirm_password"]);
 
-    // Validate input fields
+    // ✅ Validate input fields
     if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
         header("Location: register.php?error=Please fill in all fields!");
         exit();
     }
 
-    // Check if passwords match
+    // ✅ Validate username length and content (3-15 characters, letters only)
+    if (strlen($username) < 3 || strlen($username) > 15) {
+        header("Location: register.php?error=Username must be between 3 and 15 characters!");
+        exit();
+    }
+
+    if (!preg_match("/^[a-zA-Z]+$/", $username)) { // ✅ Ensures only letters
+        header("Location: register.php?error=Username can only contain letters (no numbers or symbols)!");
+        exit();
+    }
+
+    // ✅ Check if passwords match
     if ($password !== $confirm_password) {
         header("Location: register.php?error=Passwords do not match!");
         exit();
     }
 
-    // Check if username or email already exists
+    // ✅ Check if username or email already exists
     $stmt = $dbConnect->prepare("SELECT user_id FROM users WHERE username = ? OR email = ?");
     $stmt->bind_param("ss", $username, $email);
     $stmt->execute();
@@ -31,10 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $stmt->close();
 
-    // Hash password before storing it
+    // ✅ Hash password before storing it
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert user into database (default role: 'user')
+    // ✅ Insert user into database (default role: 'user')
     $stmt = $dbConnect->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, 'user')");
     $stmt->bind_param("sss", $username, $email, $hashed_password);
 

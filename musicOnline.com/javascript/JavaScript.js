@@ -3,22 +3,22 @@ document.addEventListener("DOMContentLoaded", function () {
     let index = 0;
 
     function showNextSlide() {
-        slides[index].classList.remove("active"); // Ukryj obecny
-        index = (index + 1) % slides.length; // Przejdź do następnego
-        slides[index].classList.add("active"); // Pokaż nowy
+        slides[index].classList.remove("active");
+        index = (index + 1) % slides.length; 
+        slides[index].classList.add("active"); 
     }
 
-    slides[index].classList.add("active"); // Pokaż pierwszy obraz od razu
-    setInterval(showNextSlide, 3000); // Zmienia co 3 sekundy
+    slides[index].classList.add("active"); // show 1st img
+    setInterval(showNextSlide, 3000); // change advertising every 3s
 });
 
     // show add items
     function showProductForm() {
         let form = document.getElementById("productForm");
         if (form.style.display === "none" || form.style.display === "") {
-            form.style.display = "block"; // Pokazuje formularz
+            form.style.display = "block"; // show form
         } else {
-            form.style.display = "none"; // Chowa formularz
+            form.style.display = "none"; // hide form
         }
     }
 
@@ -48,29 +48,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $(document).ready(function() {
         $("#addProductForm").submit(function(event) {
-            event.preventDefault(); // 🚀 Zapobiega przeładowaniu strony
+            event.preventDefault(); // 🚀 Prevent default form submission
     
             var formData = new FormData(this);
-            console.log("✅ Sending FormData:", [...formData.entries()]); // 🔍 Debugowanie
+            console.log("✅ Sending FormData:", [...formData.entries()]); // 🔍 Debugging
     
             $.ajax({
-                url: "addproduct.php", // 🚀 Teraz dane idą do `addproduct.php`
+                url: "addproduct.php", // 🚀 PHP file handling the upload
                 type: "POST",
                 data: formData,
                 processData: false,
                 contentType: false,
+                dataType: "json", // Expect JSON response from server
                 success: function(response) {
-                    console.log("✅ Server Response:", response); // 🔍 Debugowanie
-                    $("#message").html(response.message);
-                    $("#addProductForm")[0].reset();
+                    console.log("✅ Server Response:", response); // 🔍 Debugging
+                    alert(response.message); // Show the message in an alert
+                    if (response.message.includes("✅")) {
+                        $("#addProductForm")[0].reset(); // Reset form only on success
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.log("❌ AJAX Error:", error);
-                    $("#message").html("❌ Error: " + error);
+                    alert("❌ Error: " + error);
                 }
             });
         });
     });
+    
        
     document.addEventListener("DOMContentLoaded", function () {
         let showProductsBtn = document.getElementById("showProducts");
@@ -82,11 +86,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function showProductForm2() {
         let productForm2 = document.getElementById("productForm2");
     
-        // 🚀 Toggle: Jeśli formularz jest ukryty, pokaż go i pobierz produkty
+        // 🚀 Toggle: hide form and show again
         if (productForm2.style.display === "none" || productForm2.style.display === "") {
             productForm2.style.display = "block"; 
     
-            // 🚀 Pobierz produkty AJAX-em
+            // 🚀 fetch from AJAX
             fetch("getproducts.php")
                 .then(response => response.json())
                 .then(products => {

@@ -11,19 +11,18 @@ header {
 
 header .top-banner img {
   width: 100%;
-  height: 160px; /* Ensures the image maintains aspect ratio */
-  /* max-height: 20px; /* Ensures the image is not too tall */
+  height: 160px; 
   object-fit: cover;
 }
 
 .logo {
-  display: flex; /* Ustawienie Flexboxa */
-  align-items: center; /* Wyśrodkowanie w pionie */
-  gap: 10px; /* Odstęp między obrazkami */
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
 }
 
 .logo img {
-  max-width: 100%; /* Zapobiega zniekształceniom */
+  max-width: 100%; 
   height: auto;
 }
 
@@ -434,18 +433,18 @@ main .products .price {
 /* PRODUCT PAGE INDIVIDUAL */
 
 /* Ensuring the container behaves properly */
-.individualproduct {
+/* .individualproduct {
   max-width: 900px;
   margin: 50px auto;
   padding: 20px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* Flexbox to align product image and details side by side */
  .row {
-  margin: 4%;
+  /* margin: 4%; */
   border: 1px solid rgb(187, 187, 187); 
   display: flex;
   flex-wrap: wrap; /* Allows wrapping for smaller screens */
@@ -455,18 +454,20 @@ main .products .price {
 
 /* Left column (product image) */
 .productleft {
-  flex: 1;
-  max-width: 50%; /* Takes 50% of the width */
-  text-align: center;
-  padding: 20px;
+  /* flex: 1; */
+  /* max-width: 50%; Takes 50% of the width */
+  /* text-align: center; */
+   padding: 2%; /*was 20px */
 }
 
 /* Ensure image is responsive */
 .productleft img {
-  max-width: 500px;
+  display: flex;
+  text-wrap: wrap;
+  /* max-width: 500px; */
   max-width: 500px;
   max-height: 500px;
-  min-width: 500px;
+  min-width: 500px; 
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
   object-fit: cover;
@@ -479,8 +480,10 @@ main .products .price {
 /* Right column (product details) */
 .productright {
   flex: 1;
-  max-width: 50%;
-  padding: 20px;
+  margin-top: 9%;
+  padding: 2%;
+  /* max-width: 50%; */
+  /* padding: 20px; */
 }
 
 /* Product Title */
@@ -507,6 +510,7 @@ main .products .price {
 /* Add to Cart Button */
 .productright form {
   margin-top: 20px;
+  padding-bottom: 10px;
 }
 
 .productright button {
@@ -519,15 +523,66 @@ main .products .price {
   cursor: pointer;
   transition: background 0.3s ease-in-out;
 }
+
+
+
+
+
+
+
+
 @media screen and (max-width: 768px) {
   header .top-banner img {
-      height: 120px; /* Zmniejszona wysokość na mniejszych ekranach */
+      height: 120px; 
+  }
+  .row {
+    flex-direction: column; 
+    align-items: center;
+  }
+
+  .productleft,
+  .productright {
+    max-width: 100%; 
+    text-align: center;
+  }
+  
+  .productleft img {
+    display: flex;
+    text-wrap: wrap;
+    max-height: 2000px; 
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 200px; 
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    object-fit: cover;
+  }
+
+  .productright {
+    margin-top: 4%;
   }
 }
+
 
 /* Dla ekranów mniejszych niż 480px (smartfony) */
 @media screen and (max-width: 480px) {
   header .top-banner img {
-      height: 100px; /* Jeszcze mniejsza wysokość dla telefonów */
+      height: 100px; 
+  }
+  .productright h1 {
+    font-size: 24px; 
+  }
+
+  .productright h4 {
+    font-size: 18px;
+  }
+
+  .productright p {
+    font-size: 14px;
+  }
+
+  .productright button {
+    font-size: 16px;
+    padding: 10px 16px;
   }
 }

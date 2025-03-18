@@ -39,7 +39,7 @@ include('header.php');
 
 <main>
     <div class="products">
-        <div class="section-title">home page</div>
+        <div class="section-title">Latest added products</div>
         <?php $products = getHomePageProducts(8) ?>
        
             <div class="product">
