@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $pageTitle; ?></title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="javascript/JavaScript.js" defer></script>
+</head>
+<body>
+    <div class="navbar">
+        <ul class="nav-menu">
+            <li><a href="#">Spring Deal Days</a></li>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">Books</a></li> 
+    
+            <?php if (isset($_SESSION["user_id"])): ?>
+                <li class="nav-welcome">Welcome, <strong><?php echo htmlspecialchars($_SESSION["username"]); ?></strong></li>
+                <li><a href="logout.php">Logout</a></li>
+            <?php else: ?>
+                <li><a href="#">Books</a></li>
+                <li><a href="register.php">Register</a></li>
+            <?php endif; ?>    
+        </ul>
+        </div>
+    <section class="loginscreen">
+        <div class="window">
+            <h2>Login</h2>
+            <form action="access.php" method="post">
+                
+                <input type="text" placeholder="username" required>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                  </div>
+                
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="window">
+        <h2>Rejestracja</h2>
+    
+        <?php if (!empty($errors)): ?>
+            <div style="color: red;">
+                <ul>
+                    <?php foreach ($errors as $err): ?>
+                        <li><?php echo htmlspecialchars($err); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php elseif (!empty($success)): ?>
+            <div style="color: green;"><?php echo $success; ?></div>
+        <?php endif; ?>
+    
+        <form method="post">
+            <input type="text" name="username" placeholder="Nazwa użytkownika" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Hasło" required>
+            <input type="password" name="confirm_password" placeholder="Powtórz hasło" required>
+            <button type="submit">Zarejestruj się</button>
+        </form>
+    </div>
+
+
+
+</body>
+</html>
